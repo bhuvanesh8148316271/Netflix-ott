@@ -170,7 +170,7 @@ class App extends Component {
               </MovieItem>
             ))
           ) : (
-            <div>No movies found.</div>
+            <div>No movies foundded.</div>
           )}
         </MovieListContainer>
       </Container>
