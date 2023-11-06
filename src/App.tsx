@@ -3,80 +3,12 @@ import styled from "styled-components";
 import axios from "axios";
 import MovieComponents from "./components/MovieComponents";
 import MovieInfoComponent from "./components/MovieInfoComponents";
+import "./Apple.css"; // Import your CSS file
 
 const API_KEY = "55bb103b";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex-grow: 1;
-`;
-
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  background-color: black;
-  color: white;
-  align-items: center;
-  padding: 2px;
-  font-size: 20px;
-  font-weight: bold;
-  box-shadow: 0 3px 6px 0 #555;
-`;
-
-const AppName = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const MovieImage = styled.img`
-  width: 48px;
-  height: 48px;
-  margin: 15px;
-`;
-
-const SearchBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 9px 10px;
-  background-color: white;
-  border-radius: 6px;
-  margin-left: auto;
-  margin-right: 10px;
-  align-items: center;
-  min-width: 320px;
-`;
-
-const SearchIcon = styled.img`
-  width: 32px;
-  height: 32px;
-`;
-
-const SearchInput = styled.input`
-  color: black;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  margin-left: 15px;
-`;
-
-const MovieListContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
-  justify-content: space-evenly;
-`;
-
-const MovieItem = styled.div`
-  flex: 0 0 calc(5.33% - 6px);
-  margin-bottom: 12px;
-`;
-
 class App extends Component {
-  constructor(props: {} | Readonly<{}>) {
+  constructor(props) {
     super(props);
     this.state = {
       searchQuery: "",
@@ -87,7 +19,7 @@ class App extends Component {
     };
   }
 
-  fetchData = async (searchString: any) => {
+  fetchData = async (searchString) => {
     if (!searchString) return;
     const url = `https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`;
     try {
@@ -98,7 +30,7 @@ class App extends Component {
     }
   };
 
-  onTextChange = (event: { target: { value: any } }) => {
+  onTextChange = (event) => {
     const { timeoutId } = this.state;
     clearTimeout(timeoutId);
     this.setState({ searchQuery: event.target.value });
@@ -106,7 +38,7 @@ class App extends Component {
     this.setState({ timeoutId: timeout });
   };
 
-  fetchMovieData = async (movieId: any) => {
+  fetchMovieData = async (movieId) => {
     if (!movieId) return;
     const url = `https://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`;
     try {
@@ -117,7 +49,7 @@ class App extends Component {
     }
   };
 
-  handleMovieSelect = (movieId: any) => {
+  handleMovieSelect = (movieId) => {
     this.fetchMovieData(movieId);
   };
 
@@ -132,34 +64,37 @@ class App extends Component {
     const { searchQuery, movieList, selectedMovie, isFullDetails } = this.state;
 
     return (
-      <Container>
-        <Header>
-          <AppName>
-            <MovieImage src="/film.png.png" />
+      <div className="Containers">
+        <div className="Header">
+          <div className="AppName">
+            <img className="MovieImage" src="/film.png.png" alt="Movie Icon" />
             NETFLIX OTT App
-          </AppName>
-          <SearchBox>
-            <SearchIcon src="/searchh.png" />
-            <SearchInput
+          </div>
+          <div className="SearchBox">
+            <img className="SearchIcon" src="/searchh.png" alt="Search Icon" />
+            <input
+              className="SearchInput"
               placeholder="Search Movie"
               value={searchQuery}
               onChange={this.onTextChange}
             />
-          </SearchBox>
-        </Header>
+          </div>
+        </div>
         {selectedMovie && (
-          <MovieInfoComponent
-            selectedMovie={selectedMovie.imdbID}
-            isFullDetails={isFullDetails}
-            setIsFullDetails={(isFullDetails: any) =>
-              this.setState({ isFullDetails })
-            }
-          />
+          <div className="MovieInfoComponent">
+            <MovieInfoComponent
+              selectedMovie={selectedMovie.imdbID}
+              isFullDetails={isFullDetails}
+              setIsFullDetails={(isFullDetails) =>
+                this.setState({ isFullDetails })
+              }
+            />
+          </div>
         )}
-        <MovieListContainer>
+        <div className="MovieListContainer">
           {movieList && movieList.length > 0 ? (
-            movieList.map((movie: { imdbID: React.Key | null | undefined }) => (
-              <MovieItem key={movie.imdbID}>
+            movieList.map((movie) => (
+              <div className="MovieItem" key={movie.imdbID}>
                 <MovieComponents
                   movieDetail={movie}
                   onMovieSelect={() => {
@@ -167,13 +102,13 @@ class App extends Component {
                     this.resetSelectedMovie();
                   }}
                 />
-              </MovieItem>
+              </div>
             ))
           ) : (
-            <div>No movies foundded.</div>
+            <div className="NoMoviesFound">No movies found.</div>
           )}
-        </MovieListContainer>
-      </Container>
+        </div>
+      </div>
     );
   }
 }

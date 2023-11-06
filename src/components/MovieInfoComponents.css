@@ -1,0 +1,62 @@
+/* Container */
+
+ /*.Container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 30px;
+  justify-content: center; 
+  border-bottom: 1px solid lightgrey;
+  
+}  */
+
+/* CoverImage */
+.CoverImage {
+  height: 400px;
+  width: 20%;
+  object-fit: cover;
+  margin:20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* MovieInfoContainer */
+.MovieInfoContainer {
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: #fff;
+  padding: 18px;
+}
+
+/* MovieInfoRow */
+.MovieInfoRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MovieContent {
+  display: flex;
+  flex-direction: row;
+  flex: 1; /* Allow it to take up all available horizontal space */
+  justify-content: center;
+}
+/* Label */
+.Label {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Value */
+.Value {
+  flex-grow: 1;
+  color: #555;
+  margin-left: 16px;
+}
+
+/* StarRating */
+.StarRating {
+  display: flex;
+  align-items: center;
+  color: gold;
+}

@@ -1,0 +1,34 @@
+ .movieContainerStyle {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 280px;
+    box-shadow: 0 3px 10px 0 #aaa;
+    cursor: pointer;
+  }
+  
+  .coverImageStyle {
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .movieNameStyle {
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    margin: 15px 0;
+  }
+  
+  .infoColumnStyle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .movieInfoStyle {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    text-transform: capitalize;
+  }
+  

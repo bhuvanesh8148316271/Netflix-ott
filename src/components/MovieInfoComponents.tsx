@@ -1,48 +1,8 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import axios from "axios";
+import "./MovieInfoComponents.css";
 
 const API_KEY = "55bb103b"; // Replace with your actual API key
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 20px 30px;
-  justify-content: center;
-  border-bottom: 1px solid lightgrey;
-`;
-
-const CoverImage = styled.img`
-  height: 400px;
-  width: 20%;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-`;
-
-const MovieInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background-color: #fff;
-  padding: 18px;
-`;
-
-const MovieInfoRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Label = styled.span`
-  font-weight: bold;
-  color: #333;
-`;
-
-const Value = styled.span`
-  flex-grow: 1;
-  color: #555;
-  margin-left: 16px;
-`;
 
 class MovieInfoComponent extends Component {
   constructor(props: {} | Readonly<{}>) {
@@ -89,95 +49,108 @@ class MovieInfoComponent extends Component {
     const { movieData } = this.state;
 
     return (
-      <Container>
+      <div className="MovieContent">
         {movieData ? (
           <>
-            <CoverImage src={movieData.Poster} alt="Movie Poster" />
-            <MovieInfoContainer>
-              <MovieInfoRow>
-                <Label>Title:</Label>
-                <Value>{movieData.Title}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Year:</Label>
-                <Value>{movieData.Year}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Rated:</Label>
-                <Value>{movieData.Rated}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Released:</Label>
-                <Value>{movieData.Released}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Runtime:</Label>
-                <Value>{movieData.Runtime}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Genre:</Label>
-                <Value>{movieData.Genre}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Director:</Label>
-                <Value>{movieData.Director}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Writer:</Label>
-                <Value>{movieData.Writer}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Actors:</Label>
-                <Value>{movieData.Actors}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Plot:</Label>
-                <Value>{movieData.Plot}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Language:</Label>
-                <Value>{movieData.Language}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Country:</Label>
-                <Value>{movieData.Country}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Awards:</Label>
-                <Value>{movieData.Awards}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Metascore:</Label>
-                <Value>{movieData.Metascore}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>imdb Rating:</Label>
-                <Value>{movieData.imdbRating}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>imdbVotes:</Label>
-                <Value>{movieData.imdbVotes}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>DVD release:</Label>
-                <Value>{movieData.DVD}</Value>
-              </MovieInfoRow>
-              <MovieInfoRow>
-                <Label>Box Office:</Label>
-                <Value>{movieData.BoxOffice}</Value>
-              </MovieInfoRow>
-
-              <MovieInfoRow>
+            <img
+              src={movieData.Poster}
+              alt="Movie Poster"
+              className="CoverImage"
+            />
+            <div className="MovieInfoContainer">
+              <div className="MovieInfoRow">
+                <span className="Label">Title:</span>
+                <span className="Value">{movieData.Title}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Year:</span>
+                <span className="Value">{movieData.Year}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Rated:</span>
+                <span className="Value">{movieData.Rated}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Released:</span>
+                <span className="Value">{movieData.Released}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Runtime:</span>
+                <span className="Value">{movieData.Runtime}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Genre:</span>
+                <span className="Value">{movieData.Genre}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Director:</span>
+                <span className="Value">{movieData.Director}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Writer:</span>
+                <span className="Value">{movieData.Writer}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Actors:</span>
+                <span className="Value">{movieData.Actors}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Plot:</span>
+                <span className="Value">{movieData.Plot}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Language:</span>
+                <span className="Value">{movieData.Language}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Country:</span>
+                <span className="Value">{movieData.Country}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Awards:</span>
+                <span className="Value">{movieData.Awards}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Metascore:</span>
+                <span className="Value">{movieData.Metascore}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">imdb Rating:</span>
+                <span className="Value">
+                  <div className="StarRating">
+                    {[1, 2, 3, 4, 5].map((index) => (
+                      <span key={index}>
+                        {index <= parseFloat(movieData.imdbRating) / 2
+                          ? "★"
+                          : "☆"}
+                      </span>
+                    ))}
+                  </div>
+                </span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">imdbVotes:</span>
+                <span className="Value">{movieData.imdbVotes}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">DVD release:</span>
+                <span className="Value">{movieData.DVD}</span>
+              </div>
+              <div className="MovieInfoRow">
+                <span className="Label">Box Office:</span>
+                <span className="Value">{movieData.BoxOffice}</span>
+              </div>
+              <div className="MovieInfoRow">
                 <a href="#" onClick={this.toggleDetails}>
                   {this.state.showFullDetails ? "View Less" : "View More"}
                 </a>
-              </MovieInfoRow>
-            </MovieInfoContainer>
+              </div>
+            </div>
           </>
         ) : (
           <p>No movie selected.</p>
         )}
-      </Container>
+      </div>
     );
   }
 }

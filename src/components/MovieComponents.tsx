@@ -1,38 +1,5 @@
 import React, { Component } from "react";
-
-const movieContainerStyle = {
-  display: "flex",
-  flexDirection: "column",
-  padding: "10px",
-  width: "280px",
-  boxShadow: "0 3px 10px 0 #aaa",
-  cursor: "pointer",
-};
-
-const coverImageStyle = {
-  height: "250px",
-  objectFit: "cover",
-};
-
-const movieNameStyle = {
-  fontSize: "16px",
-  fontWeight: "600",
-  color: "black",
-  margin: "15px 0",
-};
-
-const infoColumnStyle = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-};
-
-const movieInfoStyle = {
-  fontSize: "16px",
-  fontWeight: "500",
-  color: "black",
-  textTransform: "capitalize",
-};
+import "./MovieComponents.css"; // Make sure the CSS file is correctly imported.
 
 class MovieComponents extends Component {
   render() {
@@ -40,18 +7,19 @@ class MovieComponents extends Component {
 
     return (
       <div
-        style={movieContainerStyle}
+        className="movieContainerStyle" // Use the class names from your CSS file
         onClick={() => onMovieSelect(movieDetail.imdbID)}
       >
         <img
           src={movieDetail.Poster}
           alt={movieDetail.Title}
-          style={coverImageStyle}
+          className="coverImageStyle" // Use the class names from your CSS file
         />
-        <span style={movieNameStyle}>{movieDetail.Title}</span>
-        <div style={infoColumnStyle}>
-          <span style={movieInfoStyle}>Year: {movieDetail.Year}</span>
-          <span style={movieInfoStyle}>Type: {movieDetail.Type}</span>
+        <span className="movieNameStyle">{movieDetail.Title}</span>
+        <div className="infoColumnStyle">
+          {" "}
+          <span className="movieInfoStyle">Year: {movieDetail.Year}</span>
+          <span className="movieInfoStyle">Type: {movieDetail.Type}</span>
         </div>
       </div>
     );
